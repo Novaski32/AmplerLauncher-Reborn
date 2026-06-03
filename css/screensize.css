@@ -186,28 +186,7 @@ hr {
   font-size: 1.4vw;
 }
 
-/* Patch Notes Menu CSS */
 
-#patchNotes {
-  width: 94.5vw;
-}
-
-.patchnotes-title {
-  font-size: 1.6vw;
-}
-
-.versionBox {
-  width: 2vw;
-  height: 2vw;
-}
-
-.patchnote {
-  width: 18vw;
-}
-
-.patchnotedetails {
-  font-size: 1.3vw;
-}
 
 .notescreenheader {
   font-size: 1.8vw;
@@ -236,7 +215,16 @@ hr {
 }
 
 .contributorsdiv {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 2vw;
+  align-content: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   gap: 2.5vw;
+  align-items: flex-start;
+  flex-direction: row;
 }
 
 .contributortile {

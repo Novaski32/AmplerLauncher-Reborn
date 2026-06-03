@@ -5,6 +5,9 @@
 
 <img src=".github/assets/launcher.png" alt="Launcher Photo"><br>
 
+## TODO
+Fix Screen Resolution
+
 <hr>
 
  ## Versions

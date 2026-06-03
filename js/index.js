@@ -30,6 +30,15 @@ if (customlaunchersnumber > 99) {
     console.log("%cWell.. You found an easter egg. You broke the launcher. Sure I can easily fix it. But this is a rare bug. Report if you found this bug, then I will. -IRV77", "color: red; font-weight: bold; background-color: rgba(0,0,0,0.5); padding: 1vw;");
 };
 
+function setHeaderDisplay(headerId, value) {
+    const header = document.getElementById(headerId);
+    if (header) { header.style.display = value; }
+}
+function addHeaderSelected(headerId) {
+    const header = document.getElementById(headerId);
+    if (header) { header.classList.add('selected'); }
+}
+
 function generateprofile(game) {
     let selectedGame = "";
     let running = false;
@@ -528,119 +537,10 @@ function generatefaqs() {
     })
 };
 
-const notes = document.getElementById("patchnotesbox");
 const externalmenu = document.getElementById("externalmenu");
-function generatenotes() {
-    fetch("./assets/json/patchnotes.json").then((response) => response.json()).then((data) => {
-        data.forEach((note) => {
-            const patchnote = document.createElement("div");
-            patchnote.className = "patchnote";
-            patchnote.setAttribute('data-note-type', note.type);
-            patchnote.addEventListener("click", () => {
-                const notescreenheader = document.createElement("div");
-                notescreenheader.className = "bolded notescreenheader";
-                notescreenheader.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" onclick="closenotescreen()"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>`
-                const notescreenheadertitle = document.createElement("p");
-                notescreenheadertitle.innerHTML = "Patch Notes " + note.title + " " + note.version;
-                const notescreenhr = document.createElement("hr");
 
-                const notescreendetails = document.createElement("div");
-                notescreendetails.className = "notescreendetails";
-                const notescreendate = document.createElement("p");
-                notescreendate.className = "date";
-                notescreendate.innerHTML = note.date;
-                const notescreendescription = document.createElement("p");
-                notescreendescription.className = "bolded notescreenheader";
-                notescreendescription.innerHTML = note.description;
-
-                const notescreenlist = document.createElement("ul");
-                note.notes.forEach((item) => {
-                    const noteitem = document.createElement("li");
-                    noteitem.innerHTML = item;
-                    notescreenlist.appendChild(noteitem);
-                });
-
-                notescreenheader.prepend(notescreenheadertitle);
-                notescreendetails.appendChild(notescreendate);
-                notescreendetails.appendChild(notescreendescription);
-                notescreendetails.appendChild(notescreenlist);
-                externalmenu.appendChild(notescreenheader);
-                externalmenu.appendChild(notescreenhr);
-                externalmenu.appendChild(notescreendetails);
-                externalmenu.style.display = "flex";
-            });
-
-            const patchnoteimg = document.createElement("img");
-            patchnoteimg.src = "./assets/images/" + note.icon;
-
-            const patchnotedetails = document.createElement("div");
-            patchnotedetails.className = "bolded patchnotedetails";
-            const notedetailtitle = document.createElement("p");
-            notedetailtitle.innerHTML = note.title;
-            const notedetailversion = document.createElement("p");
-            notedetailversion.innerHTML = note.version;
-
-            patchnotedetails.appendChild(notedetailtitle);
-            patchnotedetails.appendChild(notedetailversion);
-            patchnote.appendChild(patchnoteimg);
-            patchnote.appendChild(patchnotedetails);
-            notes.appendChild(patchnote);
-        });
-        if (gamenote == false) { document.querySelectorAll('[data-note-type="game"]').forEach(element => {element.style.display = 'none'})};
-        if (sitenote == false) { document.querySelectorAll('[data-note-type="site"]').forEach(element => {element.style.display = 'none'})};
-    });
-};
-
-function generaterecentnote() {
-    fetch("./assets/json/patchnotes.json").then((response) => response.json()).then((data) => {
-        const note = data[0];
-            const notescreenheader = document.createElement("div");
-            notescreenheader.className = "bolded notescreenheader";
-            notescreenheader.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" onclick="closenotescreen()"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>`
-            const notescreenheadertitle = document.createElement("p");
-            notescreenheadertitle.innerHTML = "Patch Notes " + note.title + " " + note.version;
-            const notescreenhr = document.createElement("hr");
-
-            const notescreendetails = document.createElement("div");
-            notescreendetails.className = "notescreendetails";
-            const notescreendate = document.createElement("p");
-            notescreendate.className = "date";
-            notescreendate.innerHTML = note.date;
-            const notescreendescription = document.createElement("p");
-            notescreendescription.className = "bolded notescreenheader";
-            notescreendescription.innerHTML = note.description;
-
-            const notescreenlist = document.createElement("ul");
-            note.notes.forEach((item) => {
-                const noteitem = document.createElement("li");
-                noteitem.innerHTML = item;
-                notescreenlist.appendChild(noteitem);
-            });
-
-            notescreenheader.prepend(notescreenheadertitle);
-            notescreendetails.appendChild(notescreendate);
-            notescreendetails.appendChild(notescreendescription);
-            notescreendetails.appendChild(notescreenlist);
-            externalmenu.appendChild(notescreenheader);
-            externalmenu.appendChild(notescreenhr);
-            externalmenu.appendChild(notescreendetails);
-            externalmenu.style.display = "flex";
-    })
-};
 
 // Patchnote Functions
-
-let gamenote = sitenote = true;
-function sortnote(type) {
-    if (type === "site") {
-        if (gamenote == true) { document.querySelectorAll('[data-note-type="game"]').forEach(element => {element.style.display = 'none';}); gamenote = false;}
-        else if (gamenote == false) { document.querySelectorAll('[data-note-type="game"]').forEach(element => {element.style.display = 'flex';}); gamenote = true;}
-    };
-    if (type === "game") {
-        if (sitenote == true) { document.querySelectorAll('[data-note-type="site"]').forEach(element => {element.style.display = 'none';}); sitenote = false; }
-        else if (sitenote == false) { document.querySelectorAll('[data-note-type="site"]').forEach(element => {element.style.display = 'flex';}); sitenote = true; }
-    };
-}
 
 function closenotescreen() {
     externalmenu.style.display = "none";
@@ -668,11 +568,10 @@ function webedition(){
     document.getElementById('game-bg').style.backgroundImage = 'url(./assets/images/web-edition.jpg)';
     document.getElementById('game-title').src = './assets/images/web-title.png';
     document.getElementById('gameedition').innerHTML = 'EAGLERCRAFT WEB EDITION';
-    document.getElementById('header2').style.display = 'none';
-    document.getElementById('header7').style.display = 'none';
-    document.getElementById('header8').style.display = 'none';
-    document.getElementById('header9').style.display = 'none';
-    document.getElementById('header10').style.display = 'none';
+    setHeaderDisplay('header2', 'none');
+    setHeaderDisplay('header7', 'none');
+    setHeaderDisplay('header9', 'none');
+    setHeaderDisplay('header10', 'none');
     document.getElementById('gtabs2').classList.add('selected');
     playheader();
 }
@@ -685,11 +584,9 @@ function moddededition(){
     document.getElementById('game-bg').style.backgroundImage = 'url(./assets/images/modded-edition.jpg)';
     document.getElementById('game-title').src = './assets/images/modded-title.png';
     document.getElementById('gameedition').innerHTML = 'EAGLERCRAFT MODDED';
-    document.getElementById('header5').style.display = 'none';
-    document.getElementById('header7').style.display = 'none';
-    document.getElementById('header8').style.display = 'none';
-    document.getElementById('header9').style.display = 'none';
-    document.getElementById('header10').style.display = 'none';
+    setHeaderDisplay('header7', 'none');
+    setHeaderDisplay('header9', 'none');
+    setHeaderDisplay('header10', 'none');
     document.getElementById('gtabs3').classList.add('selected');
     playheader();
 }
@@ -702,42 +599,35 @@ function eaglercontrols(){
     document.getElementById('game-bg').style.backgroundImage = 'url(./assets/images/controls-edition.jpg)';
     document.getElementById('game-title').src = './assets/images/controls-title.png';
     document.getElementById('gameedition').innerHTML = 'EAGLERCRAFT MOBILE/CONTROLLER';
-    document.getElementById('header2').style.display = 'none';
-    document.getElementById('header5').style.display = 'none';
-    document.getElementById('header7').style.display = 'none';
-    document.getElementById('header8').style.display = 'none';
-    document.getElementById('header9').style.display = 'none';
-    document.getElementById('header10').style.display = 'none';
+    setHeaderDisplay('header2', 'none');
+    setHeaderDisplay('header7', 'none');
+    setHeaderDisplay('header9', 'none');
+    setHeaderDisplay('header10', 'none');
     document.getElementById('gtabs4').classList.add('selected');
     playheader();
 }
 function creditsmenu(){
     localStorage.setItem("startupprofile", "4");
     resetTabSelected();
-    document.getElementById('gameedition').innerHTML = 'CREDITS/CONTRIBUTORS';
-    document.getElementById('header1').style.display = 'none';
-    document.getElementById('header2').style.display = 'none';
-    document.getElementById('header3').style.display = 'none';
-    document.getElementById('header4').style.display = 'none';
-    document.getElementById('header5').style.display = 'none';
-    document.getElementById('header6').style.display = 'none';
-    document.getElementById('header9').style.display = 'none';
-    document.getElementById('header10').style.display = 'none';
+    document.getElementById('gameedition').innerHTML = 'CREDITS';
+    setHeaderDisplay('header1', 'none');
+    setHeaderDisplay('header2', 'none');
+    setHeaderDisplay('header3', 'none');
+    setHeaderDisplay('header4', 'none');
+    setHeaderDisplay('header9', 'none');
+    setHeaderDisplay('header10', 'none');
     document.getElementById('gtabs5').classList.add('selected');
-    contributorsheader();
+    creditsheader();
 }
 function settingsmenu(){
     localStorage.setItem("startupprofile", "5");
     resetTabSelected();
     document.getElementById('gameedition').innerHTML = 'SETTINGS';
-    document.getElementById('header1').style.display = 'none';
-    document.getElementById('header2').style.display = 'none';
-    document.getElementById('header3').style.display = 'none';
-    document.getElementById('header4').style.display = 'none';
-    document.getElementById('header5').style.display = 'none';
-    document.getElementById('header6').style.display = 'none';
-    document.getElementById('header7').style.display = 'none';
-    document.getElementById('header8').style.display = 'none';
+    setHeaderDisplay('header1', 'none');
+    setHeaderDisplay('header2', 'none');
+    setHeaderDisplay('header3', 'none');
+    setHeaderDisplay('header4', 'none');
+    setHeaderDisplay('header7', 'none');
     document.getElementById('gtabs6').classList.add('selected');
     generalsettingsheader();
 }
@@ -748,51 +638,40 @@ function playheader(){
     generategames(launcher);
     document.getElementById('game-bg').style.display = "flex";
     document.getElementById('gameSelection').style.display = "flex";
-    document.getElementById('header1').classList.add('selected');
+    addHeaderSelected('header1');
 }
 function modsheader(){
     resetHeaderSelected();
     generatemods();
     document.getElementById('mods').style.display = "flex";
-    document.getElementById('header2').classList.add('selected');
+    addHeaderSelected('header2');
 }
 function faqsheader(){
     resetHeaderSelected();
     document.getElementById('faq').style.display = "flex";
-    document.getElementById('header3').classList.add('selected');
+    addHeaderSelected('header3');
 }
 function installationheader(){
     resetHeaderSelected();
     document.getElementById('installations').style.display = "flex";
-    document.getElementById('header4').classList.add('selected');
-}
-function patchnotesheader(){
-    resetHeaderSelected();
-    generatenotes();
-    document.getElementById('patchNotes').style.display = "flex";
-    document.getElementById('header6').classList.add('selected');
-}
-function contributorsheader(){
-    resetHeaderSelected();
-    document.getElementById('contributors').style.display = "flex";
-    document.getElementById('header7').classList.add('selected');
+    addHeaderSelected('header4');
 }
 function creditsheader(){
     resetHeaderSelected();
     document.getElementById('credits').style.display = "flex";
-    document.getElementById('header8').classList.add('selected');
+    addHeaderSelected('header7');
 }
 function generalsettingsheader(){
     resetHeaderSelected();
     document.getElementById('settings').style.display = "flex";
     document.getElementById('generalsettings').style.display = "block";
-    document.getElementById('header9').classList.add('selected');
+    addHeaderSelected('header9');
 }
 function aboutsettingsheader(){
     resetHeaderSelected();
     document.getElementById('settings').style.display = "flex";
     document.getElementById('aboutsettings').style.display = "block";
-    document.getElementById('header10').classList.add('selected');
+    addHeaderSelected('header10');
 }
 
 // Dropdown game options toggle
@@ -811,34 +690,40 @@ function resetTabSelected() {
     while (dropdown.firstChild) {dropdown.removeChild(dropdown.firstChild)};
     while (installations.firstChild) {installations.removeChild(installations.firstChild)};
     for (var i = 1; i < 7; i++) { 
-        let gtabs = document.getElementById('gtabs' + [i]);
-        gtabs.classList.remove('selected');
+        let gtabs = document.getElementById('gtabs' + i);
+        if (gtabs) { gtabs.classList.remove('selected'); }
     };
     for (var i = 1; i < 11; i++) { 
-        let headers = document.getElementById('header' + [i]);
-        headers.style.display = "block";
+        let headers = document.getElementById('header' + i);
+        if (headers) { headers.style.display = "block"; }
     };
-    document.getElementById('settings').style.display = "none";
+    const settings = document.getElementById('settings');
+    if (settings) { settings.style.display = "none"; }
 }
 
 function resetHeaderSelected() {
     while (dropdown.firstChild) {dropdown.removeChild(dropdown.firstChild)};
     while (mods.firstChild) {mods.removeChild(mods.firstChild)};
-    while (notes.firstChild) {notes.removeChild(notes.firstChild)};
     for (var i = 1; i < 11; i++) { 
-        let headers = document.getElementById('header' + [i]);
-        headers.classList.remove('selected'); 
+        let headers = document.getElementById('header' + i);
+        if (headers) { headers.classList.remove('selected'); }
     };
-    document.getElementById('game-bg').style.display = "none";
-    document.getElementById('gameSelection').style.display = "none";
-    document.getElementById('mods').style.display = "none";
-    document.getElementById('faq').style.display = "none";
-    document.getElementById('installations').style.display = "none";
-    document.getElementById('patchNotes').style.display = "none";
-    document.getElementById('credits').style.display = "none";
-    document.getElementById('contributors').style.display = "none";
-    document.getElementById('generalsettings').style.display = "none";
-    document.getElementById('aboutsettings').style.display = "none";
+    const gameBg = document.getElementById('game-bg');
+    if (gameBg) { gameBg.style.display = "none"; }
+    const gameSelection = document.getElementById('gameSelection');
+    if (gameSelection) { gameSelection.style.display = "none"; }
+    const modsEl = document.getElementById('mods');
+    if (modsEl) { modsEl.style.display = "none"; }
+    const faqEl = document.getElementById('faq');
+    if (faqEl) { faqEl.style.display = "none"; }
+    const installationsEl = document.getElementById('installations');
+    if (installationsEl) { installationsEl.style.display = "none"; }
+    const creditsEl = document.getElementById('credits');
+    if (creditsEl) { creditsEl.style.display = "none"; }
+    const generalSettingsEl = document.getElementById('generalsettings');
+    if (generalSettingsEl) { generalSettingsEl.style.display = "none"; }
+    const aboutSettingsEl = document.getElementById('aboutsettings');
+    if (aboutSettingsEl) { aboutSettingsEl.style.display = "none"; }
 }
 
 // Prevents touchscreen move

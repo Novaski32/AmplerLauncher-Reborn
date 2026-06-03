@@ -48,9 +48,6 @@
         </div>
     </div>
     <div class="sidebar" id="sidebar">
-        <div id="gtabs1" class="sidebarOptions" style="gap: 1vw;" onclick="location.href='https://discord.gg/xuu8TnSY4b'">
-            <img src="./assets/images/sidebar/m-discord.png"><div class="gTabsText"><p>Discord</p></div>
-        </div>
         <div onclick="webedition()" id="gtabs2" class="sidebarOptions selected">
             <img src="./assets/images/sidebar/i-web.png">
             <div class="gTabsText">
@@ -88,10 +85,7 @@
                     <li id="header2" class="headerButtons" onclick="modsheader()">Mods</li>
                     <li id="header3" class="headerButtons" onclick="faqsheader()">FAQ</li>
                     <li id="header4" class="headerButtons" onclick="installationheader()">Installations</li>
-                    <li id="header5" class="headerButtons" onclick="errorNA('skins')">Skins</li>
-                    <li id="header6" class="headerButtons" onclick="patchnotesheader()">Patch Notes</li>
-                    <li id="header7" class="headerButtons" onclick="contributorsheader()">Contributors</li>
-                    <li id="header8" class="headerButtons" onclick="creditsheader()">Credits</li>
+                    <li id="header7" class="headerButtons" onclick="creditsheader()">Credits</li>
                     <li id="header9" class="headerButtons" onclick="generalsettingsheader()">General</li>
                     <li id="header10" class="headerButtons" onclick="aboutsettingsheader()">About</li>
                 </ul>
@@ -118,21 +112,7 @@
         <div id="game-bg" style="background-image: url(./assets/images/web-edition.jpg);">
             <img id="game-title" src="./assets/images/web-title.png" alt="eaglercraft">
         </div>
-        <div id="patchNotes">
-            <div style="padding: 2vh 3vw 7vh;">
-                <p class="bolded patchnotes-title">Versions</p>
-                <div class="versionscontainer">
-                    <input class="versionBox" type="checkbox" onchange="sortnote('game')" checked><p>Game Releases</p><input class="versionBox" type="checkbox" onchange="sortnote('site')" checked><p>Site Releases</p>
-                </div>
-                <hr>
-                <div id="patchnotesbox"></div>
-            </div>
-        </div>
-        <div id="contributors">
-            <div style="text-align: center;">
-                <p class="bolded contributorstitle">Contributors</p>
-                <p>People who have added to the Ampler Launcher</p>
-            </div>
+        <div id="credits">
             <div class="contributorsdiv">
                 <div class="contributortile">
                     <div class="contributorside">
@@ -156,12 +136,6 @@
                         <img src="./assets/images/credits/oip.png">
                 </div>
             </div>
-        </div>
-        <div id="credits">
-            <div style="text-align: center;">
-                <p class="bolded contributorstitle">Credits</p>
-                <p>Resources that are used</p>
-            </div>
             <div class="contributorsdiv">
                 <div class="credittile">
                     <div class="contributorside">
@@ -172,10 +146,24 @@
                 </div>
                 <div class="credittile">
                     <div class="contributorside">
-                        <p class="bolded contributoruser">Eaglercraft</p>
-                        <p class="contributordescription">Minecraft code for website</p>
+                        <p class="bolded contributoruser">Eaglercraft Developers</p>
+                        <p class="contributordescription">Eaglercraft game assets</p>
                     </div>
                         <img src="./assets/images/icons/eaglercraft.png">
+                </div>
+                <div class="credittile">
+                    <div class="contributorside">
+                        <p class="bolded contributoruser">LAX1DUDE</p>
+                        <p class="contributordescription">Original creator of Eaglercraft</p>
+                    </div>
+                        <img src="./assets/images/credits/lax1dude.png">
+                </div>
+                <div class="credittile">
+                    <div class="contributorside">
+                        <p class="bolded contributoruser">Novaski</p>
+                        <p class="contributordescription">Forked and updated Ampler Launcher</p>
+                    </div>
+                        <img src="./assets/images/credits/novaski.png">
                 </div>
             </div>
         </div>
