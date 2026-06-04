@@ -1,4 +1,4 @@
-/* General CSS */
+
 ::-webkit-scrollbar {
     width: 0;
     background: transparent;
@@ -93,7 +93,7 @@ hr {
     border: 0.1vw solid var(--ui-main-lighter);
 }
 
-/* Error CSS */
+
 
 .error {
     display: none;
@@ -134,7 +134,7 @@ hr {
     }
 }
 
-/* Confirmation Menu CSS */
+
 
 #confirmationmenu {
     position: absolute;
@@ -184,7 +184,7 @@ hr {
     margin-top: 3vh;
 }
 
-/* Sidebar CSS */
+
 
 .sidebar {
     height: 100vh;
@@ -240,7 +240,7 @@ hr {
     width: fit-content;
 }
 
-/* Header CSS */
+
 
 .mainPage {
     width: 84vw;
@@ -275,7 +275,7 @@ hr {
     border-bottom: var(--ui-select) solid 0.21vw;
 }
 
-/* Body CSS */
+
 
 #game-bg {
     background-size: cover;
@@ -392,7 +392,7 @@ hr {
     }
 }
 
-/* Mods Menu CSS */
+
 
 #mods {
     position: absolute;
@@ -462,7 +462,7 @@ hr {
     text-decoration: underline;
 }
 
-/* FAQ Menu CSS */
+
 
 #faq {
     position: absolute;
@@ -502,7 +502,7 @@ hr {
     font-size: 2vw;
 }
 
-/* Installations Menu CSS */
+
 
 #installations {
     position: absolute;
@@ -705,7 +705,7 @@ hr {
     padding: revert;
 }
 
-/* Contributors Screen CSS */
+
 
 #contributors {
     position: absolute;
@@ -778,7 +778,7 @@ hr {
     filter: brightness(1.15);
 }
 
-/* Credits Screen CSS */
+
 
 #credits {
     position: absolute;
@@ -798,7 +798,7 @@ hr {
 }
 
 
-/* Settings Screen CSS */
+
 
 #settings {
     position: absolute;
@@ -910,7 +910,7 @@ hr {
     user-select: text;
 }
 
-/* Dropdown Menu CSS */
+
 
 .dropdownMenu {
     position: absolute;

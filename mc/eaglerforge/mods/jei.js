@@ -117,7 +117,7 @@ function currentScreenName() {
     return String(Minecraft.$currentScreen).substring(String(Minecraft.$currentScreen).lastIndexOf(".") + 1, String(Minecraft.$currentScreen).lastIndexOf("@"));
 }
 
-// GUI
+
 
 let button = document.createElement('button');
 button.setAttribute('id', 'recipesButton')
@@ -156,7 +156,7 @@ function addItem(url, id) {
     let name = String(id).replaceAll('_', ' ');
     item.setAttribute('class', 'item');
     item.setAttribute('itemName', name);
-    item.style.background = `url('${url}'), url('https://raw.githubusercontent.com/kuronekony4n/mcicons/main/assets/itemBg.png')`;
+    item.style.background = `url('${url}'), url('https:
     item.style.backgroundSize = "75% 75%, cover";
     item.style.backgroundPosition = "center";
     item.style.backgroundRepeat = "no-repeat";
@@ -230,12 +230,12 @@ function addAllItems() {
         let name = ModAPI.getItemById(item);
         let url = "";
         if (exceptions[name]) {
-            url = `https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.8.8/assets/minecraft/textures/items/${exceptions[name]}.png`;
+            url = `https:
         } else {
             if (name != undefined) {
-                url = `https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.8.8/assets/minecraft/textures/items/${name}.png`;
+                url = `https:
             } else {
-                url = `https://static.wikia.nocookie.net/minecraft_gamepedia/images/b/b5/Missing_Texture_JE4.png`;
+                url = `https:
             }
         }
         addItem(url, name);
@@ -387,7 +387,7 @@ ModAPI.addEventListener("frame", () => {
     document.querySelector(':root').style.setProperty('--scale', "scale("+ ModAPI.ScaledResolution.getScaleFactor()/3 +")");
 })
 
-/* Load recipes message css */
+
 addStyle(`
     :root {
     --hue-rotate: 0deg;

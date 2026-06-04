@@ -20,7 +20,7 @@
 					alert("HTTP please, do not open this file locally, run a local HTTP server and load it via HTTP");
 				}else {
 					
-					// %%%%%%%%% launch options %%%%%%%%%%%%
+					
 					
 					var relayId = Math.floor(Math.random() * 3);
 					window.eaglercraftXOpts = {
@@ -30,7 +30,7 @@
 						localesURI: "lang/",
 						worldsDB: "worlds",
 						servers: [
-							/* example: { addr: "ws://localhost:8081/", name: "Local test server" } */
+							
 						],
 						relays: [
 							{ addr: "wss://relay.deev.is/", comment: "lax1dude relay #1", primary: relayId == 0 },
@@ -39,7 +39,7 @@
 						]
 					};
 					
-					// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+					
 					
 					var q = window.location.search;
 					if((typeof q === "string") && q[0] === "?" && (typeof window.URLSearchParams !== "undefined")) {

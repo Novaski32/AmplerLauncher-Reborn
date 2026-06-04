@@ -113,7 +113,7 @@ function displayGui() {
     addBtn.addEventListener("click", () => {
       var newMod = window.prompt("URL of Mod: ", "http://example.com/example.js");
       if (!newMod) {
-        return; //User pressed cancel
+        return; 
       }
       Mods.push(
         newMod

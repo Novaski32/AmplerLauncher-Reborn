@@ -1,42 +1,42 @@
-ModAPI.require("player"); //Require the player
+ModAPI.require("player"); 
 var GrappleHookMod = {
-  oldXYZ: [0, 0, 0], //The previous hook position.
-  prev: "NONE", //The previous state
-  scaleH: 0.25, //Used for X and Z velocity
-  scaleV: 0.15, //((Grapple Y) minus (Player Y)) times scaleV
-  lift: 0.4, //Base vertical motion
-  crouchToCancel: true //Whether or not crouching should disable the grappling hook.
+  oldXYZ: [0, 0, 0], 
+  prev: "NONE", 
+  scaleH: 0.25, 
+  scaleV: 0.15, 
+  lift: 0.4, 
+  crouchToCancel: true 
 };
-ModAPI.addEventListener("update", () => { //Every client tick
-  if (!ModAPI.player.fishEntity) { //If the fish hook does not exist.
-    if (GrappleHookMod.prev === "GROUND" && (!GrappleHookMod.crouchToCancel || !ModAPI.player.isSneaking())) { //If the old state was ground
-      GrappleHookMod.prev = "NONE"; //Update the state
-      var mx = GrappleHookMod.oldXYZ[0] - ModAPI.player.x; //Get delta X
-      var my = GrappleHookMod.oldXYZ[1] - ModAPI.player.y; //Get delta Y
-      var mz = GrappleHookMod.oldXYZ[2] - ModAPI.player.z; //Get delta Z
-      mx *= GrappleHookMod.scaleH; //Multiply by horizontal scale
-      my *= GrappleHookMod.scaleV; //Multiply by vertical scale
-      mz *= GrappleHookMod.scaleH; //Multiply by horizontal scale
-      ModAPI.player.motionX += mx; //Add x motion
-      ModAPI.player.motionY += my + GrappleHookMod.lift;  //Add y motion, plus base lift.
-      ModAPI.player.motionZ += mz; //Add z motion
-      ModAPI.player.reload(); //Push changes
+ModAPI.addEventListener("update", () => { 
+  if (!ModAPI.player.fishEntity) { 
+    if (GrappleHookMod.prev === "GROUND" && (!GrappleHookMod.crouchToCancel || !ModAPI.player.isSneaking())) { 
+      GrappleHookMod.prev = "NONE"; 
+      var mx = GrappleHookMod.oldXYZ[0] - ModAPI.player.x; 
+      var my = GrappleHookMod.oldXYZ[1] - ModAPI.player.y; 
+      var mz = GrappleHookMod.oldXYZ[2] - ModAPI.player.z; 
+      mx *= GrappleHookMod.scaleH; 
+      my *= GrappleHookMod.scaleV; 
+      mz *= GrappleHookMod.scaleH; 
+      ModAPI.player.motionX += mx; 
+      ModAPI.player.motionY += my + GrappleHookMod.lift;  
+      ModAPI.player.motionZ += mz; 
+      ModAPI.player.reload(); 
     } else {
       GrappleHookMod.prev = "NONE";
     }
-  } else if (GrappleHookMod.prev === "NONE") { //If the hook exists, but the previous state was NONE, update the state.
+  } else if (GrappleHookMod.prev === "NONE") { 
     GrappleHookMod.prev = "AIR";
   }
   if (
-    ModAPI.player.fishEntity !== undefined && //If the fish hook exists
-    GrappleHookMod.prev === "AIR" && //And the hook was previously in the air
-    ModAPI.player.fishEntity.inGround //And the hook is in the ground
+    ModAPI.player.fishEntity !== undefined && 
+    GrappleHookMod.prev === "AIR" && 
+    ModAPI.player.fishEntity.inGround 
   ) {
-    GrappleHookMod.oldXYZ = [ //Set old grapple hook position
+    GrappleHookMod.oldXYZ = [ 
       ModAPI.player.fishEntity.x,
       ModAPI.player.fishEntity.y,
       ModAPI.player.fishEntity.z,
     ];
-    GrappleHookMod.prev = "GROUND";//Update state
+    GrappleHookMod.prev = "GROUND";
   }
 });

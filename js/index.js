@@ -1,4 +1,4 @@
-// Not Added Feature
+
 function errorNA(text) {
     clearTimeout()
     document.getElementById('errortext').innerHTML = "The " + text + " feature hasn't been made yet."
@@ -13,7 +13,7 @@ function errorNA(text) {
     }, 3200);
 }
 
-// Last Played Game Option
+
 let selectedGame1 = localStorage.getItem("basegame");
 let selectedGame2 = localStorage.getItem("moddedgame");
 let selectedGame3 = localStorage.getItem("assisted");
@@ -73,7 +73,7 @@ function generateprofile(game) {
     }
 };
 
-// Generate Game Options
+
 const dropdown = document.getElementById("dropdn");
 let margincount = 0;
 function generategames(path) {
@@ -540,14 +540,14 @@ function generatefaqs() {
 const externalmenu = document.getElementById("externalmenu");
 
 
-// Patchnote Functions
+
 
 function closenotescreen() {
     externalmenu.style.display = "none";
     while (externalmenu.firstChild) {externalmenu.removeChild(externalmenu.firstChild)};
 }
 
-// Game Edition Selected
+
 let launcher = "./assets/json/base.json";
 if (!localStorage.getItem("startupprofile")) {
     localStorage.setItem("startupprofile", "1");
@@ -632,7 +632,7 @@ function settingsmenu(){
     generalsettingsheader();
 }
 
-// Header Options
+
 function playheader(){
     resetHeaderSelected();
     generategames(launcher);
@@ -674,7 +674,7 @@ function aboutsettingsheader(){
     addHeaderSelected('header10');
 }
 
-// Dropdown game options toggle
+
 function dropdowntoggle(){
     if (dropdown.style.visibility === 'hidden') {
         dropdown.style.visibility = 'visible';
@@ -685,7 +685,7 @@ function dropdowntoggle(){
     }
 }
 
-// Resets certain UI aspects
+
 function resetTabSelected() {
     while (dropdown.firstChild) {dropdown.removeChild(dropdown.firstChild)};
     while (installations.firstChild) {installations.removeChild(installations.firstChild)};
@@ -726,7 +726,7 @@ function resetHeaderSelected() {
     if (aboutSettingsEl) { aboutSettingsEl.style.display = "none"; }
 }
 
-// Prevents touchscreen move
+
 window.addEventListener("scroll", preventMotion, false);
 window.addEventListener("touchmove", preventMotion, false);
 
@@ -737,7 +737,7 @@ function preventMotion(event)
     event.stopPropagation();
 }
 
-// Basic Settings
+
 const newtabcheckbox = document.getElementById("launchnewtab");
 const presetscheckbox = document.getElementById("launcherpresets");
 if (localStorage.getItem("launcherpresets")) {
@@ -784,7 +784,7 @@ function presetlaunchers() {
     };
 };
 
-// Username Generator
+
 let username = document.getElementById('username');
 let userchosen = false;
 if (userchosen === false && !localStorage.getItem("username")) {
@@ -806,7 +806,7 @@ function usernamechange() {
     username.innerHTML = localStorage.getItem("username");
 };
 
-// Clear Local Storage
+
 
 function clearlocalstorage() {
     document.querySelector('.confrimationmenuscreen').classList.remove("deleteinstallation");

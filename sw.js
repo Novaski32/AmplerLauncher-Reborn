@@ -19,7 +19,7 @@ const PRECACHE_URLS = [
   './assets/icons/icon-512x512.png'
 ];
 
-// limit items in a cache (simple FIFO eviction)
+
 async function limitCacheSize(cacheName, maxItems) {
   const cache = await caches.open(cacheName);
   const keys = await cache.keys();
@@ -33,7 +33,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(PRECACHE).then(cache => cache.addAll(PRECACHE_URLS))
   );
-  // allow the new worker to become active immediately
+  
   self.skipWaiting();
 });
 
@@ -47,7 +47,7 @@ self.addEventListener('activate', event => {
   );
   self.clients.claim();
 
-  // notify clients that the new service worker is active
+  
   self.clients.matchAll({ includeUncontrolled: true }).then(clients => {
     clients.forEach(client => client.postMessage({ type: 'SW_ACTIVATED', version: CACHE_VERSION }));
   });
@@ -65,11 +65,11 @@ self.addEventListener('fetch', event => {
 
   const url = new URL(event.request.url);
 
-  // Navigation requests (SPA pages) — network-first with offline fallback
+  
   if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request).then(response => {
-        // Optionally update the cache for navigations
+        
         const copy = response.clone();
         caches.open(PRECACHE).then(cache => cache.put(event.request, copy));
         return response;
@@ -78,7 +78,7 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Static resources — cache-first
+  
   if (url.pathname.startsWith('/css/') || url.pathname.startsWith('/js/') || url.pathname.endsWith('.json')) {
     event.respondWith(
       caches.match(event.request).then(cached => cached || fetch(event.request).then(res => {
@@ -91,7 +91,7 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Images — cache-first with a runtime-image cache and simple size limit
+  
   if (url.pathname.match(/\.(png|jpg|jpeg|svg|webp)$/)) {
     event.respondWith(
       caches.open(RUNTIME_IMAGE_CACHE).then(async cache => {
@@ -105,7 +105,7 @@ self.addEventListener('fetch', event => {
           }
           return response;
         } catch (err) {
-          // fallback to a bundled icon
+          
           return caches.match('./assets/icons/icon-192x192.png');
         }
       })
@@ -113,7 +113,7 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Default — try cache, then network
+  
   event.respondWith(
     caches.match(event.request).then(cached => cached || fetch(event.request))
   );

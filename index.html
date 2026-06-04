@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="./.github/assets/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="manifest" href="./manifest.json">
-    <!-- Discord-->
+    
     <meta content="Ampler Launcher" property="og:title">
     <meta content="A minecraft themed launcher for Eaglercraft!" property="og:description">
     <meta content="https://irv77.github.io/AmplerLauncher/" property="og:url">
@@ -229,7 +229,7 @@
         </div>
     </div>
     <script src="./js/index.js"></script>
-    <!-- Update notice for new service worker -->
+    
     <div id="update-notice" style="display:none;position:fixed;bottom:1rem;right:1rem;background:rgba(255,255,255,0.95);border:1px solid #ccc;padding:0.5rem 1rem;z-index:10000;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,0.2);">
         <div style="display:flex;gap:0.75rem;align-items:center">
             <div style="flex:1">A new version is available.</div>
@@ -266,7 +266,7 @@
                         newWorker.addEventListener('statechange', () => {
                             if (newWorker.state === 'installed') {
                                 if (navigator.serviceWorker.controller) {
-                                    // new update available
+                                    
                                     showUpdate(reg);
                                 } else {
                                     console.log('Content cached for offline use.');
@@ -282,7 +282,7 @@
                         window.location.reload();
                     });
 
-                    // optional: listen for activation messages from the SW
+                    
                     navigator.serviceWorker.addEventListener('message', event => {
                         if (!event.data) return;
                         if (event.data.type === 'SW_ACTIVATED') {

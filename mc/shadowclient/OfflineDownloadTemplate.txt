@@ -2,15 +2,7 @@
 
 
 
-<!--
 
-This file is from ${date}, there is no official eagler download link anymore, check the websites and discords of your favorite eagler servers for new versions
-
-Be aware that some server owners are lazy and do not update their client regularly
-
-Compile it yourself here: https://gitlab.com/lax1dude/eaglercraftx-1.8/
-
--->
 
 
 

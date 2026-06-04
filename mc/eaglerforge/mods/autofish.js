@@ -1,13 +1,13 @@
-ModAPI.require("player"); //Require the player, we need to select their fishing rod.
+ModAPI.require("player"); 
 var timer;
-var fishRodId = ModAPI.items.fishing_rod.getID(); //Store the item id of fishing rods, so we don't have to recalculate it every time.
-ModAPI.addEventListener("packetsoundeffect", (ev) => { //When we receive a sound effect packet
-  if (ev.soundName === "random.splash") { //If it is a splash
-    rightClick(); //run the rightClick() function
+var fishRodId = ModAPI.items.fishing_rod.getID(); 
+ModAPI.addEventListener("packetsoundeffect", (ev) => { 
+  if (ev.soundName === "random.splash") { 
+    rightClick(); 
   }
 });
-ModAPI.addEventListener("update", () => { //every client tick
-  if ( //If the player is holding a fishing rod
+ModAPI.addEventListener("update", () => { 
+  if ( 
     ModAPI.player.inventory.mainInventory[
       ModAPI.player.inventory.currentItem
     ] &&
@@ -15,19 +15,19 @@ ModAPI.addEventListener("update", () => { //every client tick
       ModAPI.player.inventory.currentItem
     ].itemId === fishRodId
   ) {
-    if (timer > 0) { //If timer is greater than 0
-      timer--; //Decrease the timer by 1
-      return; //Exit the function
+    if (timer > 0) { 
+      timer--; 
+      return; 
     }
-    if (ModAPI.player.fishEntity) { //If the fish bobber exists
-      return; //Exit the function
+    if (ModAPI.player.fishEntity) { 
+      return; 
     }
 
-    rightClick(); //run the rightClick() function
+    rightClick(); 
   }
 });
 function rightClick() {
-  if ( //If the player is not holding a fishing rod
+  if ( 
     !ModAPI.player.inventory.mainInventory[
       ModAPI.player.inventory.currentItem
     ] ||
@@ -35,8 +35,8 @@ function rightClick() {
       ModAPI.player.inventory.currentItem
     ].itemId === fishRodId
   ) {
-    return; //Exit the function
+    return; 
   }
-  ModAPI.rightClickMouse(); //Tell the ModAPI to trigger a right click.
-  timer = 15; // Set the timer to 15
+  ModAPI.rightClickMouse(); 
+  timer = 15; 
 }

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://novaski32.github.io/AmplerLauncher-Reborn/sitemap.xml

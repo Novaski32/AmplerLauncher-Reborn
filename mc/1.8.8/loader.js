@@ -237,7 +237,7 @@
 			var keyValue = window.localStorage.getItem(keyPath);
 			if(keyValue) {
 				try {
-					if((Date.now() - parseInt(keyValue)) < 6 * 3600 * 1000) { // <6 hours = don't retry
+					if((Date.now() - parseInt(keyValue)) < 6 * 3600 * 1000) { 
 						return true;
 					}else {
 						window.localStorage.removeItem(keyPath);

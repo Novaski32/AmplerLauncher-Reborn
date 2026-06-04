@@ -1,17 +1,9 @@
 "use strict";
 
-/*
-
-This is the backend for voice channels and LAN servers in eaglercraft
-
-it links with TeaVM EaglerAdapter at runtime
-
-Copyright 2022 ayunami2000 & lax1dude. All rights reserved.
-
-*/
 
 
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%% VOICE CODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 window.initializeVoiceClient = (() => {
 
@@ -257,7 +249,7 @@ window.startVoiceClient = () => {
 
 
 
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%% LAN CLIENT CODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 window.initializeLANClient = (() => {
 
@@ -461,7 +453,7 @@ window.startLANClient = () => {
 
 
 
-// %%%%%%%%%%%%%%%%%%%%%%%%%%%%% LAN SERVER CODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 window.initializeLANServer = (() => {
 
@@ -586,7 +578,7 @@ window.initializeLANServer = (() => {
 		}
 		
 		initializeServer() {
-			// nothing to do!
+			
 		}
 		
 		setICEServers(urls) {

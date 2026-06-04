@@ -1,19 +1,13 @@
 let discordsays = window.location.hostname.includes("discordsays.com") ? true : false;
 let isWASM = typeof window.isWASM !== 'undefined' && window.isWASM;
 let astraClient = typeof window.astraClient !== 'undefined' && window.astraClient;
-let moreServers = false; //!discordsays ? (typeof window.parent?.settings?.moreDefaultServers?.value === "boolean" ? window.parent.settings.moreDefaultServers.value : false) : false;
+let moreServers = false; 
 
 let relayId = Math.floor(Math.random() * 3);
 
 let serverList = [];
 
-/*if (!astraClient) {
-    serverList.push({
-        addr: "wss://ob.webmc.xyz",
-        name: "§6§lWebMC§r",
-        hideAddr: true,
-    });
-}*/
+
 
 serverList.push(
     {

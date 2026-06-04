@@ -1,5 +1,5 @@
 function initAPI(version) {
-  //AUTOMATIC MOD ADDER  
+  
   if (localStorage.getItem("modslauncher")) {
     localStorage.setItem("ml::Mods", "[]");
     var Mods = JSON.parse(localStorage.getItem("ml::Mods"));
