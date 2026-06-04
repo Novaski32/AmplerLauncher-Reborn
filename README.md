@@ -20,6 +20,7 @@ note: this cannot be run through file:// currently
 - [ ] Update versions and clients
 - [ ] Fix PWA bugs
 - [ ] Easter eggs
+- [ ] Add deploy buttons in README
 - [ ] Add privacy policy, TOS, and DMCA stuff
 - [x] Add Credits screen
 - [x] Add Settings screen
