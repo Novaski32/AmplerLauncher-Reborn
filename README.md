@@ -5,9 +5,6 @@
 
 <img src=".github/assets/launcher.png" alt="Launcher Photo"><br>
 
-## TODO
-Fix Screen Resolution
-
 <hr>
 
  ## Versions
@@ -32,6 +29,8 @@ Fix Screen Resolution
 <summary>Click here to expand feature list</summary>
 
 - [ ] Add the servers screen
+- [ ] Update versions and clients
+- [ ] Fix PWA bugs
 - [x] Add Credits screen
 - [x] Add Settings screen
 - [x] Rewrite some of the css and js
