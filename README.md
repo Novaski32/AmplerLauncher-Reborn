@@ -8,7 +8,7 @@
 ## Installation
 Currently just download the repository for the source code!  
 Future plans for an offline file may be possible!  
-note: this cannot run through file:// currently
+note: this cannot be run through file:// currently
 
 ## Features Planned
 
