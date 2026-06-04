@@ -16,6 +16,8 @@ note: this cannot be run through file:// currently
 <summary>Click here to expand feature list</summary>
 
 - [ ] Add the servers screen
+- [ ] Make data:// URL and alt links
+- [ ] Wispcraft injector
 - [ ] Update versions and clients
 - [ ] Fix PWA bugs
 - [x] Add Credits screen
@@ -30,9 +32,5 @@ note: this cannot be run through file:// currently
 - [ ] Add Skins screen
 - [x] Add Patch Notes screen
 - [ ] Fix display errors
-- [ ] Offline launcher download?
+- [ ] Offline launcher download (cross platform)
 </details>
-
-<hr>
-
->__Finally [here](https://irv77.github.io/AmplerLauncher/) is the live version of the code!__
