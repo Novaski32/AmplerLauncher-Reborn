@@ -17,15 +17,15 @@ function errorNA(text) {
 let selectedGame1 = localStorage.getItem("basegame");
 let selectedGame2 = localStorage.getItem("moddedgame");
 let selectedGame3 = localStorage.getItem("assisted");
-let modslauncher
-if (localStorage.getItem("modslauncher")) {modslauncher = JSON.parse(localStorage.getItem("modslauncher"))};
+let modslauncher;
+if (localStorage.getItem("modslauncher")) {modslauncher = JSON.parse(localStorage.getItem("modslauncher"));}
 if (!localStorage.getItem("launcherpresets")) {
     localStorage.setItem("customlaunchers", "[]");
-    localStorage.setItem("customlaunchersnumber", 0);
+    localStorage.setItem("customlaunchersnumber", "0");
     localStorage.setItem("launcherpresets", true);
     localStorage.setItem("launchnewtab", false);
 };
-let customlaunchersnumber = localStorage.getItem("customlaunchersnumber").padStart(2, "0");
+let customlaunchersnumber = (localStorage.getItem("customlaunchersnumber") || "0").padStart(2, "0");
 if (customlaunchersnumber > 99) {
     console.log("%cWell.. You found an easter egg. You broke the launcher. Sure I can easily fix it. But this is a rare bug. Report if you found this bug, then I will. -IRV77", "color: red; font-weight: bold; background-color: rgba(0,0,0,0.5); padding: 1vw;");
 };
@@ -75,9 +75,7 @@ function generateprofile(game) {
 
 
 const dropdown = document.getElementById("dropdn");
-let margincount = 0;
 function generategames(path) {
-    margincount = 0;
     if (localStorage.getItem("customlaunchers")) {
         let gamepath;
         if (path === "./assets/json/base.json") {gamepath = "basegame"};
@@ -118,7 +116,6 @@ function generatelauncheroptions(path, game, gamepath) {
 
         const gameoption = document.createElement("div");
         gameoption.className = "dropdownOptions";
-        gameoption.style.bottom = margincount + "vw";
         gameoption.addEventListener("click", () => {
             document.getElementById('gametitle').innerHTML = game.title;
             if (game.custom) {document.getElementById('gametitle').innerHTML = game.title.slice(4)};
@@ -151,7 +148,6 @@ function generatelauncheroptions(path, game, gamepath) {
         gameoptioninner.appendChild(gameoptiontext);
         gameoption.appendChild(gameoptioninner);
         dropdown.appendChild(gameoption);
-        margincount = margincount + 5;
 };
 
 const mods = document.getElementById("modsbox");
@@ -676,11 +672,11 @@ function aboutsettingsheader(){
 
 
 function dropdowntoggle(){
-    if (dropdown.style.visibility === 'hidden') {
-        dropdown.style.visibility = 'visible';
+    if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+        dropdown.style.display = 'block';
         document.getElementById('dropdownuparrow').innerHTML = '<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 20 20"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="dropdownIcon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 15l6 -6l6 6" /></svg>';
     } else {
-        dropdown.style.visibility = 'hidden'; 
+        dropdown.style.display = 'none';
         document.getElementById('dropdownuparrow').innerHTML = '<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 20 20"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="dropdownIcon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 9l6 6l6 -6" /></svg>';
     }
 }
