@@ -20,6 +20,7 @@ note: this cannot be run through file:// currently
 - [ ] Wispcraft injector
 - [ ] Update versions and clients
 - [ ] Fix PWA bugs
+- [ ] Easter eggs
 - [x] Add Credits screen
 - [x] Add Settings screen
 - [x] Rewrite some of the css and js
