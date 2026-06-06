@@ -922,11 +922,12 @@ hr {
     overflow-x: hidden;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     background-color: var(--ui-main-dark);
-    border-radius: 0.75vw;
+    border-radius: 0;
     box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.35);
     z-index: 998;
     display: none;
 }
+
 
 .dropdownOptions {
     position: static;
@@ -975,3 +976,25 @@ hr {
 #gametitle {
     width: max-content;
 }
+
+/* Fallback for the play button (ensures it shows even if class-based rules fail) */
+#mainbutton {
+    position: absolute;
+    left: 32vw;
+    bottom: 0.5vw;
+    display: flex;
+    align-items: center;
+    width: 21.5vw;
+    height: 5vw;
+    background-image: url(../assets/images/play.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: 0.1s;
+}
+#mainbutton:hover {
+    cursor: pointer;
+    background-image: url(../assets/images/play-hover.png);
+    transform: scale(1.05);
+}
+

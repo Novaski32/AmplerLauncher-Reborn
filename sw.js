@@ -7,8 +7,11 @@ const PRECACHE_URLS = [
   './offline.html',
   './css/style.css',
   './css/screensize.css',
-  './js/index.js',
+  './assets/js/index.js',
   './.github/assets/logo.png',
+
+
+
   './assets/icons/icon-72x72.png',
   './assets/icons/icon-96x96.png',
   './assets/icons/icon-128x128.png',
